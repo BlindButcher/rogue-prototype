@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/139/trunk/src/inventory/weapon
+END
+WeaponBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/134/trunk/src/inventory/weapon/WeaponBase.java
+END
+WeaponTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/139/trunk/src/inventory/weapon/WeaponTemplate.java
+END
+Weapon.java
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/136/trunk/src/inventory/weapon/Weapon.java
+END
+WeaponDamageEnhance.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/135/trunk/src/inventory/weapon/WeaponDamageEnhance.java
+END
+WeaponProperty.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/139/trunk/src/inventory/weapon/WeaponProperty.java
+END
+WeaponPropertyEnhance.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/136/trunk/src/inventory/weapon/WeaponPropertyEnhance.java
+END
+WeaponBuilder.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/136/trunk/src/inventory/weapon/WeaponBuilder.java
+END
+IWeapon.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/135/trunk/src/inventory/weapon/IWeapon.java
+END
+WeaponQuality.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/135/trunk/src/inventory/weapon/WeaponQuality.java
+END

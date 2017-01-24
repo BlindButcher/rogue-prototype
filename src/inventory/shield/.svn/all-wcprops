@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/135/trunk/src/inventory/shield
+END
+Shield.java
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/135/trunk/src/inventory/shield/Shield.java
+END
+IShield.java
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/73/trunk/src/inventory/shield/IShield.java
+END
+ShieldBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/135/trunk/src/inventory/shield/ShieldBase.java
+END
+IShieldEnhance.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/73/trunk/src/inventory/shield/IShieldEnhance.java
+END
+IShieldAccessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/73/trunk/src/inventory/shield/IShieldAccessor.java
+END

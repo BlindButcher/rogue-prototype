@@ -1,0 +1,85 @@
+<scenario defaultCols="25" defaultRows="25">
+
+    <creatureGenerator id="gen_1">
+        <creature id="RAT" weight="20"/>
+        <creature id="BAT" weight="20"/>
+    </creatureGenerator>
+
+    <creatureGenerator id="gen_2">
+        <creature id="GOBLIN" weight="20"/>
+        <creature id="GOBLIN_ARCHER" weight="20"/>
+        <creature id="VAMPIRE_BAT" weight="20"/>
+        <creature id="FIRE_BAT" weight="20"/>
+    </creatureGenerator>
+
+    <creatureGenerator id="gen_3">
+        <creature id="THIN_MUTANT" weight="20"/>
+        <creature id="ZOMBIE" weight="20"/>
+        <creature id="CHILL_ZOMBIE" weight="10"/>
+        <creature id="THIN_MUTANT_SNIPER" weight="5"/>
+    </creatureGenerator>
+
+    <creatureGenerator id="gen_4">
+        <creature id="ORC" weight="20"/>
+    </creatureGenerator>
+
+    <creatureGenerator id="gen_5">
+        <creature id="ORC_SERGENT" weight="3"/>
+    </creatureGenerator>
+
+    <creatureGenerator id="gen_6">
+        <creature id="ORC_SERGENT" weight="3"/>
+        <creature id="ORC_BOW" weight="3"/>
+        <creature id="ORC" weight="3"/>
+    </creatureGenerator>
+
+    <creatureGenerator id="gen_7">
+        <creature id="ORC_BOW" weight="3"/>
+        <creature id="GOBLIN_ARCHER" weight="5"/>
+        <creature id="TROLL" weight="2"/>
+    </creatureGenerator>
+
+    <creatureGenerator id="gen_8">
+        <creature id="ZOMBIE" weight="20"/>
+    </creatureGenerator>
+
+    <level num="0" choice="TEST_MAP_XXX" first="true">
+        <generator min="2" max="8" ref="gen_8"/>
+    </level>
+
+    <level num="1" choice="START_MAP_1" first="true">
+        <generator min="10" max="15" ref="gen_1"/>
+    </level>
+
+    <level num="2" choice="BACK_TRACK">
+        <generator min="10" max="15" ref="gen_1"/>
+    </level>
+
+    <level num="3" choice="BFS">
+        <generator min="10" max="15" ref="gen_2"/>
+        <inhabitWithBoss id="DIRE_RAT"/>
+    </level>
+
+    <level num="4" choice="ROOM_BASE">
+        <generator min="10" max="15" ref="gen_3"/>
+    </level>
+
+    <level num="5" choice="SPIRAL, BFS">
+        <inhabitWithBoss id="URUK"/>
+        <generator min="5" max="8" ref="gen_4"/>
+    </level>
+
+    <level num="6" choice="TEST_MAP_2">
+        <generator min="8" max="8" ref="gen_5"/>
+    </level>
+
+    <level num="7" any="true">
+        <generator min="7" max="7" ref="gen_6"/>
+    </level>
+
+    <level num="8" choice="TEST_MAP_1" last="true">
+        <winCondition type="KILL_MONSTER" id="ORC_LEADER"/>
+        <inhabitWithBoss id="ORC_LEADER"/>
+        <generator min="7" max="11" ref="gen_7"/>
+    </level>
+</scenario>

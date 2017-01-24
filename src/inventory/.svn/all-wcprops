@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/139/trunk/src/inventory
+END
+Grenade.java
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/135/trunk/src/inventory/Grenade.java
+END
+BasedEquipable.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/121/trunk/src/inventory/BasedEquipable.java
+END
+EquipStrategy.java
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/129/trunk/src/inventory/EquipStrategy.java
+END
+ItemFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/136/trunk/src/inventory/ItemFactory.java
+END
+Equipable.java
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/135/trunk/src/inventory/Equipable.java
+END
+ItemBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/135/trunk/src/inventory/ItemBase.java
+END
+EquipmentSlot.java
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/129/trunk/src/inventory/EquipmentSlot.java
+END
+Item.java
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/111/trunk/src/inventory/Item.java
+END
+Material.java
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/135/trunk/src/inventory/Material.java
+END
+BuilderFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/136/trunk/src/inventory/BuilderFactory.java
+END
+MaterialType.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/112/trunk/src/inventory/MaterialType.java
+END

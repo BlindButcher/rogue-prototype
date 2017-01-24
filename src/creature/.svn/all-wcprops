@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/139/trunk/src/creature
+END
+StatHolder.java
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/99/trunk/src/creature/StatHolder.java
+END
+HitContext.java
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/139/trunk/src/creature/HitContext.java
+END
+Creature.java
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/139/trunk/src/creature/Creature.java
+END
+Statistics.java
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/134/trunk/src/creature/Statistics.java
+END
+Hero.java
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/104/trunk/src/creature/Hero.java
+END
+CreatureGeneratorService.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/138/trunk/src/creature/CreatureGeneratorService.java
+END
+Attribute.java
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/126/trunk/src/creature/Attribute.java
+END
+CreatureTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/112/trunk/src/creature/CreatureTemplate.java
+END
+HitResolver.java
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/132/trunk/src/creature/HitResolver.java
+END

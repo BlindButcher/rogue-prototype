@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/129/trunk/src/util
+END
+INamedEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/109/trunk/src/util/INamedEntity.java
+END
+RandomList.java
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/111/trunk/src/util/RandomList.java
+END
+Utils.java
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/129/trunk/src/util/Utils.java
+END
+Direction.java
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/111/trunk/src/util/Direction.java
+END
+AppLogHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/82/trunk/src/util/AppLogHandler.java
+END
+PathFinder.java
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/100/trunk/src/util/PathFinder.java
+END
+MapObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/124/trunk/src/util/MapObject.java
+END
+Point.java
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/129/trunk/src/util/Point.java
+END
