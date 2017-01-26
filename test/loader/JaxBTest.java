@@ -5,6 +5,7 @@ import inventory.MaterialType;
 import org.junit.Test;
 
 import javax.xml.bind.JAXB;
+import java.io.File;
 import java.io.StringReader;
 
 import static org.junit.Assert.*;
@@ -25,7 +26,7 @@ public class JaxBTest
         assertEquals("NATURAL", type.getId());
         assertEquals("Natural", type.getName());
 
-        MaterialContainer container = JAXB.unmarshal("C:\\Users\\Blind\\Projects\\rogue-prototype\\materials.xml", MaterialContainer.class);
+        MaterialContainer container = JAXB.unmarshal(new File("materials.xml"), MaterialContainer.class);
 
         assertFalse(container.materialTypes.isEmpty());
         assertNotNull(type);
