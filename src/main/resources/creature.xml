@@ -128,7 +128,7 @@
         <weapon>MACHINE_GUN</weapon>
     </creatureTemplate>
 
-    <creatureTemplate id="ORC" name="Orc" glyph="o" exp="2" color="#99FF33" graphic="orc.png">
+    <creatureTemplate id="ORC" name="Orc" glyph="o" exp="2" color="#99FF33" graphic="orc_2.png">
         <attr type="MEL" unified="COMMON"/>
         <attr type="RAN" unified="LOW"/>
         <attr type="DEF" unified="LOW"/>

@@ -40,7 +40,7 @@
     </creatureGenerator>
 
     <creatureGenerator id="gen_8">
-        <creature id="ZOMBIE" weight="20"/>
+        <creature id="ORC" weight="20"/>
     </creatureGenerator>
 
     <level num="0" choice="TEST_MAP_XXX" first="true">
