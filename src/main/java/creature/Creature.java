@@ -2,6 +2,7 @@ package creature;
 
 import ability.Ability;
 import ability.AbilityType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
@@ -208,6 +209,7 @@ public class Creature implements TimeEventAware, IRenderable
 		return defence;
 	}
 
+	@JsonIgnore
 	public Map<AbilityType, Ability> getAbilities()
 	{
 		return abilities;
@@ -673,6 +675,7 @@ public class Creature implements TimeEventAware, IRenderable
 		this.eventHolder = eventHolder;
 	}
 
+	@JsonIgnore
 	public EventHolder getEventHolder()
 	{
 		return eventHolder;

@@ -1,5 +1,7 @@
 package main;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.google.common.collect.Lists;
 import creature.Hero;
 
@@ -20,9 +22,11 @@ import static java.util.Optional.of;
 public class WorldState {
     final EventHolder eventHolder;
     private List<LevelContext> levels = newArrayList();
-    LevelContext currentLevel;
-    Optional<Hero> hero = empty();
-    boolean heroMove = false;
+    @JsonInclude
+    public LevelContext currentLevel;
+    @JsonInclude
+    public Optional<Hero> hero = empty();
+    public boolean heroMove = false;
 
     public WorldState(EventHolder eventHolder) {
         this.eventHolder = requireNonNull(eventHolder);
@@ -36,6 +40,7 @@ public class WorldState {
         eventHolder.addEvent(event);
     }
 
+    @JsonIgnore
     public List<LevelContext> getLevels() {
         return levels;
     }
