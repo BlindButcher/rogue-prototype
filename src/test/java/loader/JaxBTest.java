@@ -26,7 +26,7 @@ public class JaxBTest
         assertEquals("NATURAL", type.getId());
         assertEquals("Natural", type.getName());
 
-        MaterialContainer container = JAXB.unmarshal(new File("materials.xml"), MaterialContainer.class);
+        MaterialContainer container = JAXB.unmarshal(getClass().getClassLoader().getResourceAsStream("materials.xml"), MaterialContainer.class);
 
         assertFalse(container.materialTypes.isEmpty());
         assertNotNull(type);
