@@ -1,0 +1,262 @@
+<creatureTemplates>
+
+    <unifiedAttributes>
+        <unifiedAttribute name="NONE" type="ARM" base="0" growth="10"/>
+        <unifiedAttribute name="COMMON" type="ARM" base="4" growth="25"/>
+        <unifiedAttribute name="GOOD" type="ARM" base="6" growth="40"/>
+
+        <unifiedAttribute name="LOW" type="MEL" base="5" growth="40"/>
+        <unifiedAttribute name="COMMON" type="MEL" base="8" growth="40"/>
+        <unifiedAttribute name="GOOD" type="MEL" base="11" growth="70"/>
+
+        <unifiedAttribute name="NONE" type="DAM" base="0" growth="15"/>
+        <unifiedAttribute name="LOW" type="DAM" base="4" growth="15"/>
+        <unifiedAttribute name="COMMON" type="DAM" base="6" growth="25"/>
+        <unifiedAttribute name="GOOD" type="DAM" base="10" growth="50"/>
+
+        <unifiedAttribute name="LOW" type="RAN" base="5" growth="40"/>
+        <unifiedAttribute name="COMMON" type="RAN" base="7" growth="40"/>
+
+        <unifiedAttribute name="LOW" type="DEF" base="5" growth="40"/>
+        <unifiedAttribute name="COMMON" type="DEF" base="7" growth="35"/>
+        <unifiedAttribute name="HIGH" type="DEF" base="15" growth="50"/>
+
+        <unifiedAttribute name="LOW" type="HEA" base="20" growth="100"/>
+        <unifiedAttribute name="COMMON" type="HEA" base="40" growth="120"/>
+        <unifiedAttribute name="GOOD" type="HEA" base="48" growth="180"/>
+        <unifiedAttribute name="HIGH" type="HEA" base="60" growth="300"/>
+        <unifiedAttribute name="VERY_HIGH" type="HEA" base="88" growth="400"/>
+
+        <unifiedAttribute name="LOW" type="SPD" base="10" growth="10"/>
+        <unifiedAttribute name="COMMON" type="SPD" base="20" growth="10"/>
+        <unifiedAttribute name="GOOD" type="SPD" base="22" growth="15"/>
+        <unifiedAttribute name="HIGH" type="SPD" base="24" growth="15"/>
+        <unifiedAttribute name="VERY_HIGH" type="SPD" base="30" growth="35"/>
+
+        <unifiedAttribute name="LOW" type="PENETRATION" base="0" growth="10"/>
+        <unifiedAttribute name="COMMON" type="PENETRATION" base="5" growth="10"/>
+        <unifiedAttribute name="GOOD" type="PENETRATION" base="15" growth="15"/>
+        <unifiedAttribute name="HIGH" type="PENETRATION" base="30" growth="15"/>
+        <unifiedAttribute name="VERY_HIGH" type="PENETRATION" base="45" growth="35"/>
+    </unifiedAttributes>
+
+
+    <creatureTemplate id="RAT" name="Rat" glyph="r" exp="1" graphic="rat.png">
+        <attr type="MEL" unified="LOW"/>
+        <attr type="RAN" unified="LOW"/>
+        <attr type="DEF" unified="LOW"/>
+        <attr type="DAM" unified="NONE"/>
+        <attr type="SPD" unified="HIGH"/>
+        <attr type="HEA" unified="LOW"/>
+        <attr type="ARM" unified="NONE"/>
+        <attr type="PENETRATION" unified="GOOD"/>
+        <predefinedWeapon name="Teeth" ranged="false" twoHanded="true">
+            <damage damageType="PHYSICAL">8</damage>
+            <delay>10/10</delay>
+            <range>1</range>
+            <bonusFactor>0.5</bonusFactor>
+            <level>1</level>
+            <equipStrategy>TWO_HANDED</equipStrategy>
+            <materialType>NATURAL</materialType>
+        </predefinedWeapon>
+    </creatureTemplate>
+
+    <creatureTemplate id="BAT" name="Bat" glyph="b" exp="1" graphic="bat.png">
+        <attr type="MEL" unified="LOW"/>
+        <attr type="RAN" unified="LOW"/>
+        <attr type="DEF" unified="HIGH"/>
+        <attr type="DAM" unified="NONE"/>
+        <attr type="SPD" unified="VERY_HIGH"/>
+        <attr type="HEA" unified="LOW"/>
+        <attr type="ARM" unified="NONE"/>
+        <predefinedWeapon name="Teeth" ranged="false" twoHanded="true">
+            <damage damageType="PHYSICAL">8</damage>
+            <delay>10/10</delay>
+            <range>1</range>
+            <bonusFactor>0.5</bonusFactor>
+            <level>1</level>
+            <equipStrategy>TWO_HANDED</equipStrategy>
+            <materialType>NATURAL</materialType>
+        </predefinedWeapon>
+    </creatureTemplate>
+
+    <creatureTemplate id="FIRE_BAT" name="Fire Bat" parent="BAT" glyph="b" exp="1" color="#FF0000" graphic="bat.png">
+        <predefinedWeapon name="Fire Teeth" ranged="false" twoHanded="true">
+            <damage damageType="FIRE">9</damage>
+            <delay>10/10</delay>
+            <range>1</range>
+            <bonusFactor>0.5</bonusFactor>
+            <level>1</level>
+            <equipStrategy>TWO_HANDED</equipStrategy>
+            <materialType>NATURAL</materialType>
+        </predefinedWeapon>
+    </creatureTemplate>
+
+    <creatureTemplate id="VAMPIRE_BAT" name="Vampire Bat" parent="BAT" glyph="b" exp="1" color="#333300" graphic="bat.png">
+        <predefinedWeapon name="Teeth" ranged="false" twoHanded="true">
+            <damage damageType="PHYSICAL">10</damage>
+            <delay>10/10</delay>
+            <range>1</range>
+            <bonusFactor>0.5</bonusFactor>
+            <equipStrategy>TWO_HANDED</equipStrategy>
+            <materialType>NATURAL</materialType>
+            <property value="1">VAMPIRIC</property>
+        </predefinedWeapon>
+    </creatureTemplate>
+
+    <creatureTemplate id="GOBLIN" name="Goblin" glyph="g" exp="1" color="#99FF33" graphic="goblin.png">
+        <attr type="MEL" unified="COMMON"/>
+        <attr type="RAN" unified="COMMON"/>
+        <attr type="DEF" unified="COMMON"/>
+        <attr type="DAM" unified="NONE"/>
+        <attr type="SPD" unified="GOOD"/>
+        <attr type="HEA" unified="COMMON"/>
+        <attr type="ARM" unified="NONE"/>
+        <predefinedWeapon name="Choppa Knife" ranged="false" twoHanded="false">
+            <damage damageType="PHYSICAL">8</damage>
+            <delay>12/10</delay>
+            <range>1</range>
+            <bonusFactor>0.2</bonusFactor>
+            <materialType>METAL</materialType>
+            <property value="5">PIERCE</property>
+        </predefinedWeapon>
+        <armor>FLAK_ARMOR</armor>
+    </creatureTemplate>
+
+    <creatureTemplate id="GOBLIN_ARCHER" name="Goblin Archer" parent="GOBLIN" glyph="g" exp="1" color="#996633" graphic="goblin.png">
+        <weapon>PISTOL</weapon>
+        <weapon>MACHINE_GUN</weapon>
+    </creatureTemplate>
+
+    <creatureTemplate id="ORC" name="Orc" glyph="o" exp="2" color="#99FF33" graphic="orc_2.png">
+        <attr type="MEL" unified="COMMON"/>
+        <attr type="RAN" unified="LOW"/>
+        <attr type="DEF" unified="LOW"/>
+        <attr type="DAM" unified="COMMON"/>
+        <attr type="SPD" unified="COMMON"/>
+        <attr type="HEA" unified="GOOD"/>
+        <attr type="ARM" unified="NONE"/>
+        <weapon>METAL_SWORD</weapon>
+        <weapon>MACE</weapon>
+        <weapon>METAL_AXE</weapon>
+        <armor>FLAK_ARMOR</armor>
+        <armor>CARAPACE_ARMOUR</armor>
+    </creatureTemplate>
+
+    <creatureTemplate id="ORC_BOW" parent="ORC" name="Orc fletcher" glyph="o" exp="2" color="#999966" graphic="orc.png">
+        <weapon>LASER_RIFLE</weapon>
+        <armor>FLAK_ARMOR</armor>
+    </creatureTemplate>
+
+    <creatureTemplate id="ORC_SERGENT" parent="ORC" name="Orc Sergent" glyph="o" exp="4" color="#999966" graphic="orc.png">
+        <weapon>MACE</weapon>
+        <armor>BREASTPLATE</armor>
+        <shield>TOWER_METAL_SHIELD</shield>
+    </creatureTemplate>
+
+    <creatureTemplate id="TROLL" name="Troll" glyph="T" exp="3" color="#33CC33" graphic="troll.png">
+        <attr type="MEL" unified="COMMON"/>
+        <attr type="RAN" unified="LOW"/>
+        <attr type="DEF" unified="LOW"/>
+        <attr type="DAM" unified="GOOD"/>
+        <attr type="SPD" unified="LOW"/>
+        <attr type="HEA" unified="VERY_HIGH"/>
+        <attr type="ARM" unified="GOOD"/>
+        <weapon>GIANT_CLUB</weapon>
+    </creatureTemplate>
+
+    <creatureTemplate id="THIN_MUTANT" name="Thin Mutant" glyph="m" exp="2" color="#8A8A8A" graphic="skeleton.png">
+        <attr type="MEL" unified="GOOD"/>
+        <attr type="RAN" unified="COMMON"/>
+        <attr type="DEF" unified="COMMON"/>
+        <attr type="DAM" unified="LOW"/>
+        <attr type="SPD" unified="GOOD"/>
+        <attr type="HEA" unified="LOW"/>
+        <attr type="ARM" unified="NONE"/>
+        <weapon>METAL_SWORD</weapon>
+        <weapon>SPEAR</weapon>
+    </creatureTemplate>
+
+    <creatureTemplate id="THIN_MUTANT_SNIPER" parent="THIN_MUTANT" name="Thin mutant sniper" glyph="s" exp="2" color="#0066FF" graphic="skeleton.png">
+        <weapon>SNIPER_RIFLE</weapon>
+    </creatureTemplate>
+
+    <creatureTemplate id="ZOMBIE" name="Zombie" glyph="z" exp="2" graphic="zombie.png">
+        <attr type="MEL" unified="LOW"/>
+        <attr type="RAN" unified="LOW"/>
+        <attr type="DEF" unified="LOW"/>
+        <attr type="DAM" unified="COMMON"/>
+        <attr type="SPD" unified="LOW"/>
+        <attr type="HEA" unified="HIGH"/>
+        <attr type="ARM" unified="COMMON"/>
+        <predefinedWeapon name="Claws" ranged="false" twoHanded="true">
+            <damage damageType="PHYSICAL">18</damage>
+            <delay>10/10</delay>
+            <range>1</range>
+            <bonusFactor>0.6</bonusFactor>
+            <level>1</level>
+            <equipStrategy>TWO_HANDED</equipStrategy>
+            <materialType>NATURAL</materialType>
+            <property value="2">SLASH</property>
+        </predefinedWeapon>
+    </creatureTemplate>
+
+    <creatureTemplate id="CHILL_ZOMBIE" parent="ZOMBIE" name="Chilly Zombie" glyph="z" exp="2" color="#0066FF" graphic="zombie.png">
+        <predefinedWeapon name="Chilly Claws" ranged="false" twoHanded="true">
+            <damage damageType="COLD">18</damage>
+            <delay>10/10</delay>
+            <range>1</range>
+            <bonusFactor>0.6</bonusFactor>
+            <level>1</level>
+            <equipStrategy>TWO_HANDED</equipStrategy>
+            <materialType>NATURAL</materialType>
+            <property value="2">SLASH</property>
+        </predefinedWeapon>
+    </creatureTemplate>
+
+    <creatureTemplate id="URUK" name="Uruk" glyph="U" exp="2" isBoss="true" color="#FF3300" graphic="uruk.png">
+        <attr type="MEL" base="10" growth="50"/>
+        <attr type="RAN" base="3" growth="50"/>
+        <attr type="DEF" base="6" growth="40"/>
+        <attr type="DAM" base="8" growth="30"/>
+        <attr type="SPD" base="18" growth="10"/>
+        <attr type="HEA" base="60" growth="250"/>
+        <attr type="ARM" base="2" growth="20"/>
+        <weapon>METAL_AXE</weapon>
+        <armor>CARAPACE_ARMOUR</armor>
+    </creatureTemplate>
+
+    <creatureTemplate id="DIRE_RAT" name="Dire Rat" glyph="D" exp="3" isBoss="true" color="#FF3300" graphic="dire_rat.png">
+        <attr type="MEL" base="8" growth="45"/>
+        <attr type="RAN" base="3" growth="45"/>
+        <attr type="DEF" base="8" growth="35"/>
+        <attr type="DAM" base="2" growth="35"/>
+        <attr type="SPD" base="28" growth="25"/>
+        <attr type="HEA" base="42" growth="150"/>
+        <attr type="ARM" base="4" growth="25"/>
+        <predefinedWeapon name="Teeth" ranged="false" twoHanded="true">
+            <damage damageType="PHYSICAL">22</damage>
+            <delay>10/10</delay>
+            <range>1</range>
+            <bonusFactor>0.5</bonusFactor>
+            <level>1</level>
+            <equipStrategy>TWO_HANDED</equipStrategy>
+            <materialType>NATURAL</materialType>
+            <property value="2">SLASH</property>
+        </predefinedWeapon>
+    </creatureTemplate>
+
+    <creatureTemplate id="ORC_LEADER" name="Tarum" glyph="L" exp="10" isBoss="true" color="#FF3300" graphic="tarum.png">
+        <attr type="MEL" base="12" growth="50"/>
+        <attr type="RAN" base="3" growth="50"/>
+        <attr type="DEF" base="8" growth="40"/>
+        <attr type="DAM" base="8" growth="25"/>
+        <attr type="SPD" base="19" growth="10"/>
+        <attr type="HEA" base="120" growth="500"/>
+        <attr type="ARM" base="3" growth="25"/>
+        <weapon>METAL_SWORD</weapon>
+        <armor>PLATEMAIL</armor>
+        <shield>TOWER_METAL_SHIELD</shield>
+    </creatureTemplate>
+
+</creatureTemplates>
