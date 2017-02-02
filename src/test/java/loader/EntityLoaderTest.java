@@ -2,8 +2,8 @@ package loader;
 
 import creature.CreatureTemplate;
 import inventory.weapon.WeaponBase;
-import junit.framework.Assert;
 import main.AbstractInjectionTest;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Set;

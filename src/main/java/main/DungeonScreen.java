@@ -138,7 +138,7 @@ public class DungeonScreen extends BasicGameState implements InputProviderListen
         logFont = new TrueTypeFont(new Font("Courier", Font.PLAIN, Main.HL), true);
         effectFont = new TrueTypeFont(new Font("Courier", Font.PLAIN, Main.HL / 2), true);
 
-        LevelContext level = createLevel(0);
+        LevelContext level = createLevel(0, injector, state);
         state.getLevels().add(level);
 
         Hero hero = (Hero) new Hero(prepareHero()).register(level, point(1, 1), 0);
@@ -163,7 +163,7 @@ public class DungeonScreen extends BasicGameState implements InputProviderListen
         state.heroMove = true;
     }
 
-    private LevelContext createLevel(int depth) {
+    public static LevelContext createLevel(int depth, Injector injector, WorldState state) {
         LevelContext level = injector.getInstance(Scenario.class).createLevel(depth);
 
         for (Creature creature : level.getCreatures()) {
@@ -434,7 +434,8 @@ public class DungeonScreen extends BasicGameState implements InputProviderListen
                     centerOnHero();
                 }
             } else if ("down".equals(action) && level.getMap().getCell(hero.getX(), hero.getY()) == Cell.DOWN_STAIRS) {
-                if (level.getDepth() + 1 >= state.getLevels().size()) state.getLevels().add(createLevel(level.getDepth() + 1));
+                if (level.getDepth() + 1 >= state.getLevels().size())
+                    state.getLevels().add(createLevel(level.getDepth() + 1, injector, state));
                 level = state.getLevels().get(level.getDepth() + 1);
                 hero.enterLevel(level);
                 hero.setX(level.getUpStairs()[0]);
@@ -573,7 +574,7 @@ public class DungeonScreen extends BasicGameState implements InputProviderListen
         }
     }
 
-    private CreatureTemplate prepareHero() {
+    public static CreatureTemplate prepareHero() {
         CreatureTemplate template = new CreatureTemplate();
         template.setName("HERO");
         template.setGlyph('@');

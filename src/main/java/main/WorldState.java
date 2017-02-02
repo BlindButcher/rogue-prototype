@@ -20,7 +20,8 @@ import static java.util.Optional.of;
  * @since 2/1/17
  */
 public class WorldState {
-    final EventHolder eventHolder;
+    @JsonInclude
+    public final EventHolder eventHolder;
     private List<LevelContext> levels = newArrayList();
     @JsonInclude
     public LevelContext currentLevel;

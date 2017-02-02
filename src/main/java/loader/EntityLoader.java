@@ -22,7 +22,6 @@ import org.w3c.dom.NodeList;
 import javax.xml.bind.JAXB;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.File;
 import java.util.Collection;
 import java.util.Set;
 import java.util.logging.Logger;
