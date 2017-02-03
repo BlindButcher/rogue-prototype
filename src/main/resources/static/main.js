@@ -14,6 +14,8 @@ PIXI.loader
   .add("graphic/dwelling/rat.png")
   .add("graphic/creature/orc_2.png")
   .add("graphic/hero/hero2.png")
+  .add("graphic/cell/door_v2_32.png")
+  .add("graphic/creature/troll_v2_32.png")
   .load(setup);
 
 const left = keyboard(37),

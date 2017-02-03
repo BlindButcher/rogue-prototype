@@ -154,7 +154,7 @@
         <shield>TOWER_METAL_SHIELD</shield>
     </creatureTemplate>
 
-    <creatureTemplate id="TROLL" name="Troll" glyph="T" exp="3" color="#33CC33" graphic="troll.png">
+    <creatureTemplate id="TROLL" name="Troll" glyph="T" exp="3" color="#33CC33" graphic="troll_v2_32.png">
         <attr type="MEL" unified="COMMON"/>
         <attr type="RAN" unified="LOW"/>
         <attr type="DEF" unified="LOW"/>

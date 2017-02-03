@@ -12,7 +12,7 @@ public enum Cell implements IRenderable {
     NULL(' ', false, "null.png"),
     BLANK('.', true, "blank.png"),
     WALL('#', false, "wall.png"),
-    DOOR('D', false, "door.png"),
+    DOOR('D', false, "door_v2_32.png"),
     OPENED_DOOR('_', true, "opened_door.png"),
     DOWN_STAIRS('>', true, "down_stairs.png"),
     UP_STAIRS('<', true, "up_stairs.png");
