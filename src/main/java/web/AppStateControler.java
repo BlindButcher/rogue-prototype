@@ -2,6 +2,7 @@ package web;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import command.MoveCommand;
 import creature.Hero;
 import inventory.Grenade;
 import inventory.ItemFactory;
@@ -11,6 +12,7 @@ import inventory.armor.IArmor;
 import inventory.weapon.Weapon;
 import loader.EntityLoader;
 import main.*;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import util.AppLogHandler;
@@ -22,6 +24,7 @@ import java.util.logging.Logger;
 
 import static main.DungeonScreen.createLevel;
 import static main.DungeonScreen.prepareHero;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static util.Point.point;
 
 /**
@@ -32,7 +35,24 @@ import static util.Point.point;
 public class AppStateControler {
     private WorldState state;
     private Injector injector;
+    private GameEngine gameEngine = new GameEngine();
 
+    @RequestMapping(value = "/move", method = POST, consumes = "application/json")
+    public Object performAction(@RequestBody MoveCommand moveCommand) {
+        Hero hero = state.hero.get();
+        int tm = hero.goTo(point(hero.getX() + moveCommand.getDx(), hero.getY() + moveCommand.getDy()));
+        if (tm != 0) {
+            state.eventHolder.addEvent(new TimeEvent(state.eventHolder.time + tm, hero, EventType.MOVE));
+            state.heroMove = false;
+
+        }
+
+        while (!state.heroMove || !hero.isAlive()) {
+            state = gameEngine.apply(state);
+        }
+
+        return new AtomicReference<>(state);
+    }
 
     @RequestMapping("/game-state")
     public Object currentState() {
