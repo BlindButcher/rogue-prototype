@@ -112,6 +112,10 @@ public class Cells
         return id;
     }
 
+    public boolean[][] getAware() {
+        return aware;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -44,14 +44,18 @@ public class AppStateControler {
         if (tm != 0) {
             state.eventHolder.addEvent(new TimeEvent(state.eventHolder.time + tm, hero, EventType.MOVE));
             state.heroMove = false;
-
         }
 
         while (!state.heroMove || !hero.isAlive()) {
             state = gameEngine.apply(state);
         }
 
-        return new AtomicReference<>(state);
+        for (int i = 0; i < state.currentLevel.getMap().getCells().length; i++)
+        for (int j = 0; j < state.currentLevel.getMap().getCells()[0].length; j++)
+            if (state.hero.get().sees(i, j))
+                state.currentLevel.getMap().setAware(i, j);
+
+        return state;
     }
 
     @RequestMapping("/game-state")

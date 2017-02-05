@@ -1,6 +1,10 @@
 'use strict';
 
 const H = 32;
+const NX = 26;
+const NY = 26;
+const NULL_CELL = 'graphic/cell/null.png';
+let bx, by;
 
 PIXI.loader
   .add("graphic/creature/bat.png")
@@ -41,6 +45,12 @@ function parseJSON(response) {
   return response.json()
 }
 
+function inMapRange(state, x, y) {
+  let row = state.currentLevel.map.rows;
+  let cols = state.currentLevel.map.cols;
+  return !((x < 0 || x >= row)
+  || (y < 0 || y >= cols));
+}
 
 function handleMove(delta) {
   fetch("/move", {
@@ -86,6 +96,10 @@ function gameLoop() {
 }
 
 function updateState(json) {
+  let hero = json.currentLevel.creatures.find((c) => c.name === 'HERO');
+  bx = hero.x - NX / 2;
+  by = hero.y - NY / 2;
+
   // Clean previous state
   for (let i = stage.children.length - 1; i >= 0; i--) { stage.removeChild(stage.children[i]);}
 
@@ -93,14 +107,22 @@ function updateState(json) {
   let cells = json.currentLevel.map.cells;
 
   for (let i = 0; i < cells.length; i++)
-    for (let j = 0; j < cells[i].length; j++) {
+    for (let j = by; j < cells[0].length; j++) {
+
+      let imagePath = inMapRange(json, i, j) ? cells[i][j].imagePath : NULL_CELL;
 
       let blank = new PIXI.Sprite(
-        PIXI.loader.resources[cells[i][j].imagePath].texture
+        PIXI.loader.resources[imagePath].texture
       );
 
       blank.x = i * H;
       blank.y = j * H;
+
+      if (!json.currentLevel.map.aware[i][j]) {
+        let greyFilter = new PIXI.filters.ColorMatrixFilter();
+        greyFilter.greyscale(0.5, false);
+        blank.filters = [greyFilter];
+      }
 
       stage.addChild(blank);
     }
