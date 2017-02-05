@@ -3,9 +3,11 @@ package main;
 
 import ability.AbilityType;
 import com.google.common.base.Optional;
+import com.google.common.base.Preconditions;
 import creature.Creature;
 import creature.CreatureTemplate;
 import effect.IEffect;
+import org.newdawn.slick.state.GameState;
 import util.Point;
 
 import java.util.function.Function;
@@ -87,6 +89,14 @@ public class GameEngine implements Function<WorldState, WorldState> {
         }
 
         return state;
+    }
+
+    public void heroMapAware(WorldState state) {
+        Preconditions.checkArgument(state.hero.isPresent());
+        for (int i = 0; i < state.currentLevel.getMap().getCells().length; i++)
+            for (int j = 0; j < state.currentLevel.getMap().getCells()[0].length; j++)
+                if (state.hero.get().sees(i, j))
+                    state.currentLevel.getMap().setAware(i, j);
     }
 
     public TimeEvent pollEvent(WorldState state)

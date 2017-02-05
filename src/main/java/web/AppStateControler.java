@@ -50,10 +50,7 @@ public class AppStateControler {
             state = gameEngine.apply(state);
         }
 
-        for (int i = 0; i < state.currentLevel.getMap().getCells().length; i++)
-        for (int j = 0; j < state.currentLevel.getMap().getCells()[0].length; j++)
-            if (state.hero.get().sees(i, j))
-                state.currentLevel.getMap().setAware(i, j);
+        gameEngine.heroMapAware(state);
 
         return state;
     }
@@ -92,6 +89,8 @@ public class AppStateControler {
         state.setHero(hero);
         state.currentLevel = level;
         state.heroMove = true;
+        gameEngine.heroMapAware(state);
+
         return "Success";
     }
 }
