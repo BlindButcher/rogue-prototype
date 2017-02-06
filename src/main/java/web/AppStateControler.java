@@ -51,7 +51,7 @@ public class AppStateControler {
         }
 
         gameEngine.heroMapAware(state);
-
+        state.heroSees = gameEngine.heroSees(state);
         return state;
     }
 
@@ -90,7 +90,7 @@ public class AppStateControler {
         state.currentLevel = level;
         state.heroMove = true;
         gameEngine.heroMapAware(state);
-
+        state.heroSees = gameEngine.heroSees(state);
         return "Success";
     }
 }

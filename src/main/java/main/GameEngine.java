@@ -99,6 +99,17 @@ public class GameEngine implements Function<WorldState, WorldState> {
                     state.currentLevel.getMap().setAware(i, j);
     }
 
+    public boolean[][] heroSees(WorldState state) {
+        boolean[][] result = new boolean[state.currentLevel.getMap().getCells().length][];
+        Preconditions.checkArgument(state.hero.isPresent());
+        for (int i = 0; i < state.currentLevel.getMap().getCells().length; i++) {
+            result[i] = new boolean[state.currentLevel.getMap().getCells()[i].length];
+            for (int j = 0; j < state.currentLevel.getMap().getCells()[0].length; j++)
+                    result[i][j] = state.hero.get().sees(i, j);
+        }
+        return result;
+    }
+
     public TimeEvent pollEvent(WorldState state)
     {
         TimeEvent res = state.eventHolder.poll();

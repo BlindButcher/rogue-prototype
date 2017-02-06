@@ -16,7 +16,7 @@ public class TimeEvent implements Comparable<TimeEvent>
 	{
 		super();
 		this.time = time;
-		this.creature = requireNonNull(creature);
+		this.creature = creature;
 		this.type = requireNonNull(type);
 	}
 

@@ -15,10 +15,11 @@ PIXI.loader
   .add("graphic/cell/null.png")
   .add("graphic/cell/opened_door.png")
   .add("graphic/cell/up_stairs.png")
+  .add("graphic/cell/start_up.png")
   .add("graphic/dwelling/rat.png")
   .add("graphic/creature/orc_2.png")
   .add("graphic/hero/hero2.png")
-  .add("graphic/cell/door_v2_32.png")
+  .add("graphic/cell/closed_door.png")
   .add("graphic/creature/troll_v2_32.png")
   .load(setup);
 
@@ -32,10 +33,7 @@ let stage;
 let state;
 
 function initRenderer(json) {
-  renderer = PIXI.autoDetectRenderer(H * json.currentLevel.map.rows, H * json.currentLevel.map.cols, {
-    transparent: true,
-    backgroundColor: '0x86D0F2'
-  });
+  renderer = PIXI.autoDetectRenderer(H * json.currentLevel.map.rows, H * json.currentLevel.map.cols);
   document.body.appendChild(renderer.view);
 
   stage = new PIXI.Container();
@@ -118,13 +116,17 @@ function updateState(json) {
       blank.x = i * H;
       blank.y = j * H;
 
-      if (!json.currentLevel.map.aware[i][j]) {
-        let greyFilter = new PIXI.filters.ColorMatrixFilter();
-        greyFilter.greyscale(0.5, false);
-        blank.filters = [greyFilter];
-      }
+      let aware = json.currentLevel.map.aware[i][j];
+      let sees = json.heroSees[i][j];
 
-      stage.addChild(blank);
+      if (aware) {
+        if (!sees) {
+          let greyFilter = new PIXI.filters.ColorMatrixFilter();
+          greyFilter.greyscale(0.5, false);
+          blank.filters = [greyFilter];
+        }
+        stage.addChild(blank);
+      }
     }
 
   let dwellings = json.currentLevel.dwellings;
@@ -144,15 +146,17 @@ function updateState(json) {
   let creatures = json.currentLevel.creatures;
 
   creatures.forEach((creature) => {
+    let sees = json.heroSees[creature.x][creature.y];
+    if (sees) {
+      let picture = new PIXI.Sprite(
+        PIXI.loader.resources[creature.imagePath].texture
+      );
 
-    let picture = new PIXI.Sprite(
-      PIXI.loader.resources[creature.imagePath].texture
-    );
+      picture.x = creature.x * H;
+      picture.y = creature.y * H;
 
-    picture.x = creature.x * H;
-    picture.y = creature.y * H;
-
-    stage.addChild(picture);
+      stage.addChild(picture);
+    }
   });
 }
 

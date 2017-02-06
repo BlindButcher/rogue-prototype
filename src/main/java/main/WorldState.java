@@ -27,6 +27,7 @@ public class WorldState {
     public LevelContext currentLevel;
     @JsonInclude
     public Optional<Hero> hero = empty();
+    public boolean[][] heroSees;
     public boolean heroMove = false;
 
     public WorldState(EventHolder eventHolder) {
