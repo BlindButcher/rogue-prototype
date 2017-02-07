@@ -1,10 +1,10 @@
 'use strict';
 
 const H = 32;
-const NX = 26;
-const NY = 26;
 const NULL_CELL = 'graphic/cell/null.png';
-let bx, by;
+let viewportX = 0, viewportY = 0;
+let viewHeight = 26, viewportWidth = 26;
+let worldHeight, worldWidth;
 
 PIXI.loader
   .add("graphic/creature/bat.png")
@@ -31,6 +31,10 @@ const left = keyboard(37),
 let renderer;
 let stage;
 let state;
+
+function findHero(state) {
+  return state.currentLevel.creatures.find((c) => c.name === 'HERO');
+}
 
 function initRenderer(json) {
   renderer = PIXI.autoDetectRenderer(H * json.currentLevel.map.rows, H * json.currentLevel.map.cols);
@@ -62,6 +66,11 @@ function handleMove(delta) {
     .then(parseJSON)
     .then((json) => {
       state = json;
+
+      let hero = findHero(state);
+      viewportX = hero.x - viewportWidth / 2;
+      viewportY = hero.y - viewHeight / 2;
+
     }).catch(function (ex) {
       console.log('parsing failed', ex)
     });
@@ -79,6 +88,9 @@ function setup() {
       return response.json()
     }).then(function (json) {
       state = json;
+      let hero = findHero(state);
+      viewportX = hero.x - viewportWidth / 2;
+      viewportY = hero.y - viewHeight / 2;
       initRenderer(json);
       updateState(json);
       gameLoop();
@@ -94,9 +106,6 @@ function gameLoop() {
 }
 
 function updateState(json) {
-  let hero = json.currentLevel.creatures.find((c) => c.name === 'HERO');
-  bx = hero.x - NX / 2;
-  by = hero.y - NY / 2;
 
   // Clean previous state
   for (let i = stage.children.length - 1; i >= 0; i--) { stage.removeChild(stage.children[i]);}
@@ -104,8 +113,8 @@ function updateState(json) {
 
   let cells = json.currentLevel.map.cells;
 
-  for (let i = 0; i < cells.length; i++)
-    for (let j = by; j < cells[0].length; j++) {
+  for (let i = viewportX; i < viewportX + viewportWidth; i++)
+    for (let j = viewportX; j < viewportY + viewHeight; j++) {
 
       let imagePath = inMapRange(json, i, j) ? cells[i][j].imagePath : NULL_CELL;
 
@@ -113,11 +122,11 @@ function updateState(json) {
         PIXI.loader.resources[imagePath].texture
       );
 
-      blank.x = i * H;
-      blank.y = j * H;
+      blank.x = (i - viewportX) * H;
+      blank.y = (j - viewportY) * H;
 
-      let aware = json.currentLevel.map.aware[i][j];
-      let sees = json.heroSees[i][j];
+      let aware = inMapRange(json, i, j) ? json.currentLevel.map.aware[i][j] : false;
+      let sees = inMapRange(json, i, j) ? json.heroSees[i][j] : false;
 
       if (aware) {
         if (!sees) {
@@ -131,17 +140,17 @@ function updateState(json) {
 
   let dwellings = json.currentLevel.dwellings;
 
-  dwellings.forEach((dwelling) => {
+  /* dwellings.forEach((dwelling) => {
 
-    let picture = new PIXI.Sprite(
-      PIXI.loader.resources[dwelling.imagePath].texture
-    );
+   let picture = new PIXI.Sprite(
+   PIXI.loader.resources[dwelling.imagePath].texture
+   );
 
-    picture.x = dwelling.location.x * H;
-    picture.y = dwelling.location.y * H;
+   picture.x = dwelling.location.x * H + viewportX * H;
+   picture.y = dwelling.location.y * H + viewportY * H;
 
-    stage.addChild(picture);
-  });
+   stage.addChild(picture);
+   });*/
 
   let creatures = json.currentLevel.creatures;
 
@@ -152,8 +161,8 @@ function updateState(json) {
         PIXI.loader.resources[creature.imagePath].texture
       );
 
-      picture.x = creature.x * H;
-      picture.y = creature.y * H;
+      picture.x = (creature.x - viewportX) * H;
+      picture.y = (creature.y - viewportY) * H;
 
       stage.addChild(picture);
     }
