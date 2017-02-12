@@ -1,12 +1,15 @@
 package command;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.newdawn.slick.command.Command;
 
 public class MoveCommand implements Command
 {
     private final int dx, dy;
 
-    public MoveCommand(int dx, int dy)
+    @JsonCreator
+    public MoveCommand(@JsonProperty("dx") int dx, @JsonProperty("dy") int dy)
     {
         super();
         this.dx = dx;

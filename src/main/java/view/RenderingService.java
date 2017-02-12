@@ -29,7 +29,7 @@ public class RenderingService implements IRenderingService
             image = imageCache.get(object.getImagePath());
         } catch (ExecutionException e)
         {
-            throw new RuntimeException(e);
+            throw new RuntimeException("imagePath:" + object.getImagePath(), e);
         }
 
         if (filter != null)

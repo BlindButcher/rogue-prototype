@@ -26,12 +26,6 @@ import static com.google.inject.name.Names.named;
  */
 public class AppModule extends AbstractModule {
     protected void configure() {
-        try {
-            LogManager.getLogManager().readConfiguration(
-                    getClass().getClassLoader().getResourceAsStream("logging.properties"));
-        } catch (Exception e) {
-            throw new IllegalStateException("Logging system is not initialized.", e);
-        }
         bind(AppLogHandler.class).in(Scopes.SINGLETON);
         bind(Messages.class).in(Scopes.SINGLETON);
         bind(EntityLoader.class).in(Scopes.SINGLETON);

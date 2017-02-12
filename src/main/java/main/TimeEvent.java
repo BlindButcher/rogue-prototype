@@ -2,6 +2,10 @@ package main;
 
 import creature.Creature;
 
+import java.util.Objects;
+
+import static java.util.Objects.requireNonNull;
+
 public class TimeEvent implements Comparable<TimeEvent>
 {
 	private final long time;
@@ -13,7 +17,7 @@ public class TimeEvent implements Comparable<TimeEvent>
 		super();
 		this.time = time;
 		this.creature = creature;
-		this.type = type;
+		this.type = requireNonNull(type);
 	}
 
 	public long getTime()
