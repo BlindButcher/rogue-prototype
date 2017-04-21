@@ -20,6 +20,10 @@ import static java.util.Optional.of;
  * @since 2/1/17
  */
 public class WorldState {
+    public enum GameResult{
+        ONGOING, WIN, LOSE
+    }
+
     @JsonInclude
     public final EventHolder eventHolder;
     private List<LevelContext> levels = newArrayList();
@@ -29,6 +33,8 @@ public class WorldState {
     public Optional<Hero> hero = empty();
     public boolean[][] heroSees;
     public boolean heroMove = false;
+    @JsonInclude
+    public GameResult result = GameResult.ONGOING;
 
     public WorldState(EventHolder eventHolder) {
         this.eventHolder = requireNonNull(eventHolder);

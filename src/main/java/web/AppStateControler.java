@@ -4,6 +4,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import command.MoveCommand;
 import creature.Hero;
+import dungeon.Scenario;
 import inventory.Grenade;
 import inventory.ItemFactory;
 import inventory.armor.ArmorModificationService;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import util.AppLogHandler;
 
 import javax.annotation.PostConstruct;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -40,6 +40,17 @@ public class AppStateControler {
     @RequestMapping(value = "/move", method = POST, consumes = "application/json")
     public Object performAction(@RequestBody MoveCommand moveCommand) {
         Hero hero = state.hero.get();
+
+        if (!hero.isAlive()) {
+            state.result = WorldState.GameResult.LOSE;
+            return state;
+        }
+
+        if (injector.getInstance(Scenario.class).checkWin(state.getLevels())) {
+            state.result = WorldState.GameResult.WIN;
+            return state;
+        }
+
         int tm = hero.goTo(point(hero.getX() + moveCommand.getDx(), hero.getY() + moveCommand.getDy()));
         if (tm != 0) {
             state.eventHolder.addEvent(new TimeEvent(state.eventHolder.time + tm, hero, EventType.MOVE));
@@ -57,7 +68,8 @@ public class AppStateControler {
 
     @RequestMapping("/game-state")
     public Object currentState() {
-        return new AtomicReference<>(state);
+        initState();
+        return state;
     }
 
     @PostConstruct

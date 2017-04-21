@@ -54,6 +54,21 @@ function inMapRange(state, x, y) {
   || (y < 0 || y >= cols));
 }
 
+function handleDeath() {
+  stage.destroy(true);
+
+  var div = document.createElement("div");
+  div.style.width = "100px";
+  div.style.height = "100px";
+  div.style.background = "red";
+  div.style.color = "white";
+  div.innerHTML = "You lose.";
+
+  document.getElementById("main").appendChild(div);
+
+
+}
+
 function handleMove(delta) {
   fetch("/move", {
     headers: {
@@ -68,6 +83,9 @@ function handleMove(delta) {
       state = json;
 
       let hero = findHero(state);
+      if (state.result === 'LOSE') {
+        handleDeath();
+      }
       viewportX = hero.x - viewportWidth / 2;
       viewportY = hero.y - viewHeight / 2;
 
@@ -100,9 +118,11 @@ function setup() {
 }
 
 function gameLoop() {
-  requestAnimationFrame(gameLoop);
-  updateState(state);
-  renderer.render(stage);
+  if (state.result !== 'LOSE') {
+    requestAnimationFrame(gameLoop);
+    updateState(state);
+    renderer.render(stage);
+  }
 }
 
 function updateState(json) {
